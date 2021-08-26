@@ -83,7 +83,7 @@ public class Interface extends Game {
         counter_bolsonarinhos = new JTextField (jogo.getBolsonarinhos() + " bolsonarinhos");
         counter_bolsonarinhos.setEditable(false);
         counter_bolsonarinhos.setFocusable(false);
-        counter_bolsonarinhos.setBounds(0, 150, 500, 50);
+        counter_bolsonarinhos.setBounds(50, 150, 500, 50);
         counter_bolsonarinhos.setFont(new Font(Font.SERIF, Font.BOLD, 50));
         
         counter_upgrades = new JTextArea ("Cloroquinas: " + cloroquina.quantity + "\nPropinas: " + propina.quantity + "\nPatadas: " + patada_entrevista.quantity + "\nNepotismos: " + nepotismo.quantity);
