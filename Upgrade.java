@@ -23,7 +23,7 @@ public class Upgrade {
         this.quantity += 1;
     }
 
-    public Upgrade(Double multiplier, int quantity, String name, String description, int cost) {
+    public Upgrade(int multiplier, int quantity, String name, String description, int cost) {
         this.multiplier = multiplier;
         this.quantity = quantity;
         this.name = name;

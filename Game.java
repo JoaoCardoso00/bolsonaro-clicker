@@ -1,12 +1,27 @@
 package clicker;
 
+
 public class Game {
     private int bolsonarinhos = 0;
-    private double multiplier = 1;
+    private int multiplier = 0;
+
+    public void generateBolsonarinhos(Interface game){
+        while (true) {
+            bolsonarinhos += multiplier;
+            game.updateLabel(this);
+            try {
+                Thread.sleep(1000);
+            } catch(InterruptedException e) {
+            }
+        }
+    }
 
     public void click() {
-        bolsonarinhos += 1 * multiplier;
+        bolsonarinhos += 1;
 
+    }
+    public int getMultiplier() {
+        return multiplier;
     }
 
     public int getBolsonarinhos() {
@@ -29,5 +44,4 @@ public class Game {
             upgrade.increaseCost();
         }
     }
-
 }

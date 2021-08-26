@@ -7,5 +7,6 @@ public class index {
 
         ui.createFrame("Bolsonaro Clicker v17", jogo);
         ui.frame.repaint();
+        jogo.generateBolsonarinhos(ui);
     }
 }
