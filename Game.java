@@ -3,10 +3,18 @@ package clicker;
 public class Game {
     private int bolsonarinhos = 0;
     private double multiplier = 1;
-    private boolean finished = false;
 
     public void click(){
         bolsonarinhos += 1 * multiplier;
+
+    }
+
+    public int getBolsonarinhos(){
+        return bolsonarinhos;
+    }
+
+    public Game(){
+
     }
 
     public void setMultiplier(double num){
