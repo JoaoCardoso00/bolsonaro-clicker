@@ -42,7 +42,7 @@ public class Interface extends Game {
     }
 
     void createPanel(Game jogo) {
-        header = new JPanel();
+        header = new JPanel(null);
         body1 = new JPanel();
         body2 = new JPanel();
 
