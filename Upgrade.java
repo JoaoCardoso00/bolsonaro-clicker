@@ -2,10 +2,10 @@ package clicker;
 
 public class Upgrade {
     private double multiplier;
-    private int quantity;
-    private String name;
-    private String description;
-    private int cost;
+    public int quantity;
+    public String name;
+    public String description;
+    public int cost;
 
     public int getCost(){
         return this.cost;
