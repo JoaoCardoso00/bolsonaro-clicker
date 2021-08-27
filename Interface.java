@@ -1,8 +1,6 @@
 package clicker;
-
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.border.TitledBorder;
 
 
 
@@ -20,6 +18,8 @@ public class Interface extends Game {
     JButton patadasB;
     JButton nepotismoB;
     Color DARK_GREEN;
+    String name;
+    int num_upgrades = 4;
 
     Upgrade cloroquina = new Upgrade(1, 0, "cloroquina", "remedinho po covid :)", 100);
     Upgrade propina = new Upgrade(2, 0, "propina", "proteja seu filho :)", 300);
@@ -27,13 +27,17 @@ public class Interface extends Game {
     Upgrade nepotismo = new Upgrade(5, 0, "nepotismo", "venha meu filho s2:)", 900);
 
 
-    public void Interface() {
+    public int getNumUpgrades(){
+        return num_upgrades;
+    }
 
+    public Interface(String name) {
+        this.name = name;
     }
 
 
-    void createFrame(String s, Game jogo) {
-        frame = new JFrame(s);
+    void createFrame(Game jogo) {
+        frame = new JFrame(name);
         panel = new JPanel(null);
         frame.setSize(1280, 920);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
