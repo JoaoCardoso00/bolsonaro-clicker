@@ -19,10 +19,10 @@ public class Interface extends Game {
     public String name;
     public int num_upgrades = 4;
 
-    Upgrade cloroquina = new Upgrade(1, 0, "cloroquina", "remedinho po covid :)", 100);
-    Upgrade propina = new Upgrade(2, 0, "propina", "proteja seu filho :)", 300);
-    Upgrade patadas = new Upgrade(3, 0, "patada na entrevista", "vao ficar de mimimi ate quando", 500);
-    Upgrade nepotismo = new Upgrade(5, 0, "nepotismo", "venha meu filho s2:)", 900);
+    Upgrade cloroquina = new Upgrade(1, 0, "cloroquina", "remedinho po covid :)", 50);
+    Upgrade propina = new Upgrade(2, 0, "propina", "proteja seu filho :)", 150);
+    Upgrade patadas = new Upgrade(3, 0, "patada na entrevista", "vao ficar de mimimi ate quando", 250);
+    Upgrade nepotismo = new Upgrade(5, 0, "nepotismo", "venha meu filho s2:)", 450);
 
 
     public int getNumUpgrades(){

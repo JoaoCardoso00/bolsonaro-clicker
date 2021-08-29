@@ -1,8 +1,6 @@
 package clicker;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
 
 public class Conquistas{
     private boolean starting_game = false;

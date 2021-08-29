@@ -24,7 +24,7 @@ public class Game {
         if(bolsonarinhos == 999999){
             conq.checker(this, 3);
         }
-        bolsonarinhos += 1000;
+        bolsonarinhos += 1;
         clicks += 1;
 
     }
