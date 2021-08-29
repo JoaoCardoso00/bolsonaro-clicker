@@ -5,21 +5,21 @@ import javax.swing.*;
 
 
 public class Interface extends Game {
-    JFrame frame;
-    JPanel panel;
-    JTextField  title;
-    JTextField  subtitle;
-    JTextField  counter_bolsonarinhos;
-    JTextField  counter_multiplier;
-    JTextArea  counter_upgrades;
-    JButton click_target;
-    JButton cloroquinaB;
-    JButton propinaB;
-    JButton patadasB;
-    JButton nepotismoB;
-    Color DARK_GREEN;
-    String name;
-    int num_upgrades = 4;
+    public JFrame frame;
+    private JPanel panel;
+    private JTextField  title;
+    private JTextField  subtitle;
+    private JTextField  counter_bolsonarinhos;
+    private JTextField  counter_multiplier;
+    private JTextArea  counter_upgrades;
+    private JButton click_target;
+    private JButton cloroquinaB;
+    private JButton propinaB;
+    private JButton patadasB;
+    private JButton nepotismoB;
+    public Color DARK_GREEN;
+    public String name;
+    public int num_upgrades = 4;
 
     Upgrade cloroquina = new Upgrade(1, 0, "cloroquina", "remedinho po covid :)", 100);
     Upgrade propina = new Upgrade(2, 0, "propina", "proteja seu filho :)", 300);
@@ -41,7 +41,7 @@ public class Interface extends Game {
         panel = new JPanel(null);
         frame.setSize(1280, 920);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ImageIcon icone = new ImageIcon("clicker/brasil.png");
+        ImageIcon icone = new ImageIcon("clicker/img/brasil.png");
         frame.setIconImage(icone.getImage());
 
         frame.setResizable(false);
@@ -55,7 +55,7 @@ public class Interface extends Game {
     void createButtons(Game jogo) {
 
         click_target = new JButton();
-        ImageIcon bolsonaro = new ImageIcon("clicker/bolsonarinho.jpg");
+        ImageIcon bolsonaro = new ImageIcon("clicker/img/skins/bolsonarinho.jpg");
         click_target.setBounds(0, 300, 640, 620);
         click_target.setIcon(bolsonaro);
         click_target.addActionListener(e -> {
@@ -64,7 +64,7 @@ public class Interface extends Game {
         });
 
         cloroquinaB = new JButton("<html>&nbsp;&nbsp;Cloroquinas<br/>&nbsp;&nbsp;Custo:" + cloroquina.getCost() + "</html>");
-        cloroquinaB.setIcon(new ImageIcon("clicker/cloroquina.png"));
+        cloroquinaB.setIcon(new ImageIcon("clicker/img/cloroquina.png"));
         cloroquinaB.setBounds(713, 330, 500, 100);
         cloroquinaB.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
         cloroquinaB.addActionListener(e -> {
@@ -72,7 +72,7 @@ public class Interface extends Game {
             updateLabel(jogo);
         });
         propinaB = new JButton("<html>&nbsp;&nbsp;Propinas<br/>&nbsp;&nbsp;Custo:" + propina.getCost() + "</html>");
-        propinaB.setIcon(new ImageIcon("clicker/propina.png"));
+        propinaB.setIcon(new ImageIcon("clicker/img/propina.png"));
         propinaB.setBounds(713, 470, 500, 100);
         propinaB.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
         propinaB.addActionListener(e -> {
@@ -80,7 +80,7 @@ public class Interface extends Game {
             updateLabel(jogo);
         });
         patadasB = new JButton("<html>&nbsp;&nbsp;Patadas<br/>&nbsp;&nbsp;Custo:" + patadas.getCost() + "</html>");
-        patadasB.setIcon(new ImageIcon("clicker/patadas.png"));
+        patadasB.setIcon(new ImageIcon("clicker/img/patadas.png"));
         patadasB.setBounds(713, 610, 500, 100);
         patadasB.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
         patadasB.addActionListener(e -> {
@@ -88,7 +88,7 @@ public class Interface extends Game {
             updateLabel(jogo);
         });
         nepotismoB = new JButton("<html>&nbsp;&nbsp;Nepotismo<br/>&nbsp;&nbsp;Custo:" + nepotismo.getCost() + "</html>");
-        nepotismoB.setIcon(new ImageIcon("clicker/nepotismo.png"));
+        nepotismoB.setIcon(new ImageIcon("clicker/img/nepotismo.png"));
         nepotismoB.setBounds(713, 750, 500, 100);
         nepotismoB.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
         nepotismoB.addActionListener(e -> {
@@ -138,6 +138,7 @@ public class Interface extends Game {
         subtitle.setForeground(DARK_GREEN);
         subtitle.setFont(new Font(Font.DIALOG, Font.BOLD, 10));
     }
+
     void updateLabel(Game jogo) {
         counter_bolsonarinhos.setText(jogo.getBolsonarinhos() + " bolsonarinhos");
         counter_multiplier.setText(jogo.getMultiplier() + " bolsonarinhos por segundo");
@@ -149,11 +150,13 @@ public class Interface extends Game {
 
 
     }
+
     void addComp() {
         Component[] comps = {click_target,  counter_bolsonarinhos, counter_multiplier, title, subtitle, counter_upgrades, cloroquinaB, propinaB, patadasB, nepotismoB};
         for(int i = 0; i < comps.length; i++) {
             panel.add(comps[i]);
         }
-        
     }
+
+    
 }

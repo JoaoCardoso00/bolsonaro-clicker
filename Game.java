@@ -4,6 +4,7 @@ package clicker;
 public class Game {
     private int bolsonarinhos = 0;
     private int multiplier = 0;
+    private int clicks = 0;
 
     public void generateBolsonarinhos(Interface game){
         while (true) {
@@ -15,21 +16,23 @@ public class Game {
             }
         }
     }
-
+    
     public void click() {
         bolsonarinhos += 1;
+        clicks += 1;
 
     }
+
+    public int getClicks() {
+        return clicks;
+    }
+
     public int getMultiplier() {
         return multiplier;
     }
 
     public int getBolsonarinhos() {
         return bolsonarinhos;
-    }
-
-    public Game() {
-
     }
 
     public void setMultiplier(double num) {
