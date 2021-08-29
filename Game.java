@@ -17,8 +17,14 @@ public class Game {
         }
     }
     
-    public void click() {
-        bolsonarinhos += 1;
+    public void click(Conquistas conq) {
+        if(clicks == 0){
+            conq.checker(this, 2);
+        }
+        if(bolsonarinhos == 999999){
+            conq.checker(this, 3);
+        }
+        bolsonarinhos += 1000;
         clicks += 1;
 
     }
@@ -39,11 +45,11 @@ public class Game {
         multiplier += num;
     }
 
-    public void buyUpgrade(Upgrade upgrade) {
+    public void buyUpgrade(Upgrade upgrade, Conquistas conq) {
         if (bolsonarinhos >= upgrade.getCost()) {
             bolsonarinhos -= upgrade.getCost();
             setMultiplier(upgrade.getMultiplier());
-            upgrade.increaseQuantity();
+            upgrade.increaseQuantity(this, conq);
             upgrade.increaseCost();
         }
     }

@@ -12,14 +12,36 @@ public class Upgrade {
     }
 
     public void increaseCost(){
-        this.cost *= 1.5;
+        this.cost *= 1.06;
     }
 
     public double getMultiplier(){
         return this.multiplier;
     }
 
-    public void increaseQuantity(){
+    public void increaseQuantity(Game jogo, Conquistas conq){
+        switch (name) {
+            case "cloroquina":
+                if (this.quantity == 9) {
+                    conq.checker(jogo, 4);
+                }
+                break;
+            case "propina":
+                if (this.quantity == 9) {
+                    conq.checker(jogo, 5);
+                }
+                break;
+            case "patadas":
+                if (this.quantity == 9) {
+                    conq.checker(jogo, 6);
+                }
+                break;
+            case "nepotismo":
+                if (this.quantity == 9) {
+                    conq.checker(jogo, 7);
+                }
+                break;
+        }
         this.quantity += 1;
     }
 

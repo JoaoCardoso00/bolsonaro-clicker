@@ -2,8 +2,6 @@ package clicker;
 import java.awt.*;
 import javax.swing.*;
 
-
-
 public class Interface extends Game {
     public JFrame frame;
     private JPanel panel;
@@ -36,63 +34,63 @@ public class Interface extends Game {
     }
 
 
-    void createFrame(Game jogo) {
+    void createFrame(Game jogo, Conquistas conq) {
         frame = new JFrame(name);
         panel = new JPanel(null);
         frame.setSize(1280, 920);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ImageIcon icone = new ImageIcon("clicker/img/brasil.png");
+        ImageIcon icone = new ImageIcon("clicker/img/main/brasil.png");
         frame.setIconImage(icone.getImage());
-
+        frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
         frame.add(panel);
         createLabels(jogo);
-        createButtons(jogo);
+        createButtons(jogo, conq);
         addComp();
 
     }
-    void createButtons(Game jogo) {
+    void createButtons(Game jogo, Conquistas conq) {
 
         click_target = new JButton();
         ImageIcon bolsonaro = new ImageIcon("clicker/img/skins/bolsonarinho.jpg");
         click_target.setBounds(0, 300, 640, 620);
         click_target.setIcon(bolsonaro);
         click_target.addActionListener(e -> {
-            jogo.click();
+            jogo.click(conq);
             updateLabel(jogo);
         });
 
         cloroquinaB = new JButton("<html>&nbsp;&nbsp;Cloroquinas<br/>&nbsp;&nbsp;Custo:" + cloroquina.getCost() + "</html>");
-        cloroquinaB.setIcon(new ImageIcon("clicker/img/cloroquina.png"));
+        cloroquinaB.setIcon(new ImageIcon("clicker/img/main/cloroquina.png"));
         cloroquinaB.setBounds(713, 330, 500, 100);
         cloroquinaB.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
         cloroquinaB.addActionListener(e -> {
-            jogo.buyUpgrade(cloroquina);
+            jogo.buyUpgrade(cloroquina, conq);
             updateLabel(jogo);
         });
         propinaB = new JButton("<html>&nbsp;&nbsp;Propinas<br/>&nbsp;&nbsp;Custo:" + propina.getCost() + "</html>");
-        propinaB.setIcon(new ImageIcon("clicker/img/propina.png"));
+        propinaB.setIcon(new ImageIcon("clicker/img/main/propina.png"));
         propinaB.setBounds(713, 470, 500, 100);
         propinaB.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
         propinaB.addActionListener(e -> {
-            jogo.buyUpgrade(propina);
+            jogo.buyUpgrade(propina, conq);
             updateLabel(jogo);
         });
         patadasB = new JButton("<html>&nbsp;&nbsp;Patadas<br/>&nbsp;&nbsp;Custo:" + patadas.getCost() + "</html>");
-        patadasB.setIcon(new ImageIcon("clicker/img/patadas.png"));
+        patadasB.setIcon(new ImageIcon("clicker/img/main/patadas.png"));
         patadasB.setBounds(713, 610, 500, 100);
         patadasB.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
         patadasB.addActionListener(e -> {
-            jogo.buyUpgrade(patadas);
+            jogo.buyUpgrade(patadas, conq);
             updateLabel(jogo);
         });
         nepotismoB = new JButton("<html>&nbsp;&nbsp;Nepotismo<br/>&nbsp;&nbsp;Custo:" + nepotismo.getCost() + "</html>");
-        nepotismoB.setIcon(new ImageIcon("clicker/img/nepotismo.png"));
+        nepotismoB.setIcon(new ImageIcon("clicker/img/main/nepotismo.png"));
         nepotismoB.setBounds(713, 750, 500, 100);
         nepotismoB.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
         nepotismoB.addActionListener(e -> {
-            jogo.buyUpgrade(nepotismo);
+            jogo.buyUpgrade(nepotismo, conq);
             updateLabel(jogo);
         });
     }
@@ -122,7 +120,7 @@ public class Interface extends Game {
 
         title = new JTextField();
         title.setBorder(BorderFactory.createEmptyBorder());
-        title.setText("O jogo do filho do Brasil");
+        title.setText("O jogo do pai do Brasil");
         title.setEditable(false);
         title.setFocusable(false);
         title.setBounds(340, 20, 700, 60);
