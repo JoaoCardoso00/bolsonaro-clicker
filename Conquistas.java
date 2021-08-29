@@ -62,15 +62,16 @@ public class Conquistas{
 
         newFrame.setLocationRelativeTo(null);
         newFrame.setResizable(false);
-        newFrame.setVisible(true);
-
+        
         JPanel newPanel = new JPanel();
         newPanel.setBounds(0,0,429,156);
         newFrame.add(newPanel);
-
+        
         JLabel newLabel = new JLabel(new ImageIcon(imgs[id]));
         newLabel.setBounds(0, 0, 429, 156);
         newPanel.add(newLabel);
+        newFrame.setVisible(true);
+        newFrame.repaint();
 
     }
 
