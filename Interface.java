@@ -2,6 +2,7 @@ package clicker;
 import java.awt.*;
 import javax.swing.*;
 
+
 public class Interface extends Game {
     public JFrame frame;
     private JPanel panel;
@@ -15,9 +16,11 @@ public class Interface extends Game {
     private JButton propinaB;
     private JButton patadasB;
     private JButton nepotismoB;
+    private JRadioButton lightMode;
     public Color DARK_GREEN;
     public String name;
     public int num_upgrades = 4;
+    private boolean lightmode = false;
 
     Upgrade cloroquina = new Upgrade(1, 0, "cloroquina", "remedinho po covid :)", 50);
     Upgrade propina = new Upgrade(2, 0, "propina", "proteja seu filho :)", 150);
@@ -37,9 +40,10 @@ public class Interface extends Game {
     void createFrame(Game jogo, Conquistas conq) {
         frame = new JFrame(name);
         panel = new JPanel(null);
+        panel.setBackground(new Color(53,53,49));
         frame.setSize(1280, 920);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ImageIcon icone = new ImageIcon("clicker/img/main/brasil.png");
+        ImageIcon icone = new ImageIcon("img/main/brasil.png");
         frame.setIconImage(icone.getImage());
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
@@ -53,7 +57,7 @@ public class Interface extends Game {
     void createButtons(Game jogo, Conquistas conq) {
 
         click_target = new JButton();
-        ImageIcon bolsonaro = new ImageIcon("clicker/img/skins/bolsonarinho.jpg");
+        ImageIcon bolsonaro = new ImageIcon("img/skins/bolsonarinho.jpg");
         click_target.setBounds(0, 300, 640, 620);
         click_target.setIcon(bolsonaro);
         click_target.addActionListener(e -> {
@@ -62,7 +66,7 @@ public class Interface extends Game {
         });
 
         cloroquinaB = new JButton("<html>&nbsp;&nbsp;Cloroquinas<br/>&nbsp;&nbsp;Custo:" + cloroquina.getCost() + "</html>");
-        cloroquinaB.setIcon(new ImageIcon("clicker/img/main/cloroquina.png"));
+        cloroquinaB.setIcon(new ImageIcon("img/main/cloroquina.png"));
         cloroquinaB.setBounds(713, 330, 500, 100);
         cloroquinaB.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
         cloroquinaB.addActionListener(e -> {
@@ -70,7 +74,7 @@ public class Interface extends Game {
             updateLabel(jogo);
         });
         propinaB = new JButton("<html>&nbsp;&nbsp;Propinas<br/>&nbsp;&nbsp;Custo:" + propina.getCost() + "</html>");
-        propinaB.setIcon(new ImageIcon("clicker/img/main/propina.png"));
+        propinaB.setIcon(new ImageIcon("img/main/propina.png"));
         propinaB.setBounds(713, 470, 500, 100);
         propinaB.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
         propinaB.addActionListener(e -> {
@@ -78,7 +82,7 @@ public class Interface extends Game {
             updateLabel(jogo);
         });
         patadasB = new JButton("<html>&nbsp;&nbsp;Patadas<br/>&nbsp;&nbsp;Custo:" + patadas.getCost() + "</html>");
-        patadasB.setIcon(new ImageIcon("clicker/img/main/patadas.png"));
+        patadasB.setIcon(new ImageIcon("img/main/patadas.png"));
         patadasB.setBounds(713, 610, 500, 100);
         patadasB.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
         patadasB.addActionListener(e -> {
@@ -86,12 +90,30 @@ public class Interface extends Game {
             updateLabel(jogo);
         });
         nepotismoB = new JButton("<html>&nbsp;&nbsp;Nepotismo<br/>&nbsp;&nbsp;Custo:" + nepotismo.getCost() + "</html>");
-        nepotismoB.setIcon(new ImageIcon("clicker/img/main/nepotismo.png"));
+        nepotismoB.setIcon(new ImageIcon("img/main/nepotismo.png"));
         nepotismoB.setBounds(713, 750, 500, 100);
         nepotismoB.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
         nepotismoB.addActionListener(e -> {
             jogo.buyUpgrade(nepotismo, conq);
             updateLabel(jogo);
+        });
+
+        lightMode = new JRadioButton("light mode");
+        lightMode.setBounds(1150,10,100,50);
+        lightMode.setBackground(new Color(53,53,49));
+        lightMode.setForeground(Color.white);
+        lightMode.addActionListener(e -> {
+            JPanel light = new JPanel();
+            if (lightmode) {
+                frame.remove(light);
+                lightmode = false;
+                frame.repaint();
+            }
+            else{
+                lightmode = true;
+                light.setBackground(Color.white);
+                frame.add(light);
+            }
         });
     }
 
@@ -99,12 +121,16 @@ public class Interface extends Game {
         DARK_GREEN = new Color(0,156,59);
         counter_bolsonarinhos = new JTextField (jogo.getBolsonarinhos() + " bolsonarinhos");
         counter_bolsonarinhos.setBorder(BorderFactory.createEmptyBorder());
+        counter_bolsonarinhos.setBackground(new Color(53,53,49));
+        counter_bolsonarinhos.setForeground(Color.white);
         counter_bolsonarinhos.setEditable(false);
         counter_bolsonarinhos.setFocusable(false);
         counter_bolsonarinhos.setBounds(50, 150, 500, 50);
         counter_bolsonarinhos.setFont(new Font(Font.SERIF, Font.BOLD, 50));
 
         counter_multiplier = new JTextField (jogo.getMultiplier() + " bolsonarinhos por segundo");
+        counter_multiplier.setBackground(new Color(53,53,49));
+        counter_multiplier.setForeground(Color.white);
         counter_multiplier.setBorder(BorderFactory.createEmptyBorder());
         counter_multiplier.setEditable(false);
         counter_multiplier.setFocusable(false);
@@ -114,6 +140,8 @@ public class Interface extends Game {
         counter_upgrades = new JTextArea ("Cloroquinas: " + cloroquina.quantity + "\nPropinas: " + propina.quantity + "\nPatadas: " + patadas.quantity + "\nNepotismos: " + nepotismo.quantity);
         counter_upgrades.setBounds(713, 120, 500, 130);
         counter_upgrades.setBackground(new Color(238, 238, 238));
+        counter_upgrades.setBackground(new Color(53,53,49));
+        counter_upgrades.setForeground(Color.white);
         counter_upgrades.setEditable(false);
         counter_upgrades.setFocusable(false);
         counter_upgrades.setFont(new Font(Font.SERIF, Font.BOLD, 25));
@@ -121,6 +149,8 @@ public class Interface extends Game {
         title = new JTextField();
         title.setBorder(BorderFactory.createEmptyBorder());
         title.setText("O jogo do pai do Brasil");
+        title.setBackground(new Color(53,53,49));
+        title.setForeground(Color.white);
         title.setEditable(false);
         title.setFocusable(false);
         title.setBounds(340, 20, 700, 60);
@@ -130,6 +160,8 @@ public class Interface extends Game {
         subtitle = new JTextField();
         subtitle.setBorder(BorderFactory.createEmptyBorder());
         subtitle.setText("ou não");
+        subtitle.setBackground(new Color(53,53,49));
+        subtitle.setForeground(Color.white);
         subtitle.setEditable(false);
         subtitle.setFocusable(false);
         subtitle.setBounds(620, 75, 100, 20);
@@ -150,7 +182,7 @@ public class Interface extends Game {
     }
 
     void addComp() {
-        Component[] comps = {click_target,  counter_bolsonarinhos, counter_multiplier, title, subtitle, counter_upgrades, cloroquinaB, propinaB, patadasB, nepotismoB};
+        Component[] comps = {click_target,  counter_bolsonarinhos, counter_multiplier, title, subtitle, counter_upgrades, cloroquinaB, propinaB, patadasB, nepotismoB, lightMode};
         for(int i = 0; i < comps.length; i++) {
             panel.add(comps[i]);
         }

@@ -11,10 +11,10 @@ public class Conquistas{
     private boolean ten_patadas = false;
     private boolean ten_nepotismos = false;
 
-    private String[] imgs = { "", "clicker/img/conquistas/starting_game.png", "clicker/img/conquistas/first_bonoro.png",
-            "clicker/img/conquistas/one_million_bolsonarinhos.png", "clicker/img/conquistas/ten_cloroquinas.png",
-            "clicker/img/conquistas/ten_propinas.png", "clicker/img/conquistas/ten_patadas.png",
-            "clicker/img/conquistas/ten_nepotismos.png" };
+    private String[] imgs = { "", "img/conquistas/starting_game.png", "img/conquistas/first_bonoro.png",
+            "img/conquistas/one_million_bolsonarinhos.png", "img/conquistas/ten_cloroquinas.png",
+            "img/conquistas/ten_propinas.png", "img/conquistas/ten_patadas.png",
+            "img/conquistas/ten_nepotismos.png" };
 
     public Boolean[] getConquistas(){
         Boolean[] conquistas = {starting_game, first_bonoro, one_million_bonoro, ten_cloroquinas, ten_nepotismos, ten_patadas, ten_propinas};
@@ -57,7 +57,7 @@ public class Conquistas{
         JFrame newFrame = new JFrame("Conquista desbloqueada");
         newFrame.setSize(445,199);
 
-        ImageIcon icone = new ImageIcon("clicker/img/main/brasil.png");
+        ImageIcon icone = new ImageIcon("img/main/brasil.png");
         newFrame.setIconImage(icone.getImage());
 
         newFrame.setLocationRelativeTo(null);
