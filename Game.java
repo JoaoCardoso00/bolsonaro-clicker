@@ -9,11 +9,9 @@ public class Game {
     public void generateBolsonarinhos(Interface game){
         while (true) {
             bolsonarinhos += multiplier;
+            
             game.updateLabel(this);
-            try {
-                Thread.sleep(1000);
-            } catch(InterruptedException e) {
-            }
+            try {Thread.sleep(1000);} catch(InterruptedException e) {}
         }
     }
     
@@ -21,10 +19,12 @@ public class Game {
         if(clicks == 0){
             conq.checker(this, 2);
         }
+
         if(bolsonarinhos > 999999){
             conq.checker(this, 3);
         }
-        bolsonarinhos += 1000;
+
+        bolsonarinhos += 1;
         clicks += 1;
 
     }
@@ -48,14 +48,15 @@ public class Game {
     public void buyUpgrade(Upgrade upgrade, Conquistas conq) {
         if (bolsonarinhos >= upgrade.getCost()) {
             bolsonarinhos -= upgrade.getCost();
+
             upgrade.increaseQuantity(this, conq);
             upgrade.increaseCost();
-            System.out.println(upgrade.getMultiplier());
+
             if(upgrade.getQuantity() % 50 == 0){
                 upgrade.setMultiplier(upgrade.getMultiplier() * 5);
-                System.out.println(upgrade.getMultiplier());
                 setMultiplier(upgrade.getMultiplier());
             }
+
             setMultiplier(upgrade.getMultiplier());
             
         }
