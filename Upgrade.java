@@ -1,7 +1,7 @@
 package clicker;
 
 public class Upgrade {
-    private double multiplier;
+    private int multiplier;
     public int quantity;
     public String name;
     public String description;
@@ -15,8 +15,16 @@ public class Upgrade {
         this.cost *= 1.06;
     }
 
-    public double getMultiplier(){
+    public int getMultiplier(){
         return this.multiplier;
+    }
+    
+    public void setMultiplier(int newValue) {
+        this.multiplier = newValue;
+    }
+
+    public int getQuantity() {
+        return this.quantity;
     }
 
     public void increaseQuantity(Game jogo, Conquistas conq){

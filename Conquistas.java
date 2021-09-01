@@ -11,10 +11,10 @@ public class Conquistas{
     private boolean ten_patadas = false;
     private boolean ten_nepotismos = false;
 
-    private String[] imgs = { "", "img/conquistas/starting_game.png", "img/conquistas/first_bonoro.png",
-            "img/conquistas/one_million_bolsonarinhos.png", "img/conquistas/ten_cloroquinas.png",
-            "img/conquistas/ten_propinas.png", "img/conquistas/ten_patadas.png",
-            "img/conquistas/ten_nepotismos.png" };
+    private String[] imgs = { "", "clicker/img/conquistas/starting_game.png", "clicker/img/conquistas/first_bonoro.png",
+            "clicker/img/conquistas/one_million_bolsonarinhos.png", "clicker/img/conquistas/ten_cloroquinas.png",
+            "clicker/img/conquistas/ten_propinas.png", "clicker/img/conquistas/ten_patadas.png",
+            "clicker/img/conquistas/ten_nepotismos.png" };
 
     public Boolean[] getConquistas(){
         Boolean[] conquistas = {starting_game, first_bonoro, one_million_bonoro, ten_cloroquinas, ten_nepotismos, ten_patadas, ten_propinas};
@@ -24,40 +24,55 @@ public class Conquistas{
     public void checker(Game jogo, int id){
         switch (id) {
             case 1:
-                starting_game = true;
-                createConqFrame(id);
+                if(!starting_game){
+                    starting_game = true;
+                    createConqFrame(id);
+                }
                 break;
             case 2:
-                first_bonoro = true;
-                createConqFrame(id);
+                if(!first_bonoro){
+                    first_bonoro = true;
+                    createConqFrame(id);
+                }
                 break;
             case 3:
-                one_million_bonoro = true;
-                createConqFrame(id);
+                if(!one_million_bonoro){
+                    one_million_bonoro = true;
+                    createConqFrame(id);
+                }
                 break;
             case 4:
-                ten_cloroquinas = true;
-                createConqFrame(id);
+                if(!ten_cloroquinas){
+                    ten_cloroquinas = true;
+                    createConqFrame(id);
+                }
                 break;
             case 5:
-                ten_propinas = true;
-                createConqFrame(id);
+                if(!ten_propinas){
+                    ten_propinas = true;
+                    createConqFrame(id);
+                }
                 break;
             case 6:
-                ten_patadas = true;
-                createConqFrame(id);
+                if(!ten_patadas){
+                    ten_patadas = true;
+                    createConqFrame(id);
+                }
                 break;
             case 7:
-                ten_nepotismos = true;
-                createConqFrame(id);
+                if(!ten_nepotismos){
+                    ten_nepotismos = true;
+                    createConqFrame(id);
+                }
                 break;
         }
     }
+    
     public void createConqFrame(int id) {
         JFrame newFrame = new JFrame("Conquista desbloqueada");
         newFrame.setSize(445,199);
 
-        ImageIcon icone = new ImageIcon("img/main/brasil.png");
+        ImageIcon icone = new ImageIcon("clicker/img/main/brasil.png");
         newFrame.setIconImage(icone.getImage());
 
         newFrame.setLocationRelativeTo(null);

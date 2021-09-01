@@ -16,7 +16,7 @@ public class Interface extends Game {
     private JButton propinaB;
     private JButton patadasB;
     private JButton nepotismoB;
-    private JRadioButton lightMode;
+    private JButton lightMode;
     public Color DARK_GREEN;
     public String name;
     public int num_upgrades = 4;
@@ -24,7 +24,7 @@ public class Interface extends Game {
 
     Upgrade cloroquina = new Upgrade(1, 0, "cloroquina", "remedinho po covid :)", 50);
     Upgrade propina = new Upgrade(2, 0, "propina", "proteja seu filho :)", 150);
-    Upgrade patadas = new Upgrade(3, 0, "patada na entrevista", "vao ficar de mimimi ate quando", 250);
+    Upgrade patadas = new Upgrade(3, 0, "patadas", "vao ficar de mimimi ate quando", 250);
     Upgrade nepotismo = new Upgrade(5, 0, "nepotismo", "venha meu filho s2:)", 450);
 
 
@@ -43,7 +43,7 @@ public class Interface extends Game {
         panel.setBackground(new Color(53,53,49));
         frame.setSize(1280, 920);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ImageIcon icone = new ImageIcon("img/main/brasil.png");
+        ImageIcon icone = new ImageIcon("clicker/img/main/brasil.png");
         frame.setIconImage(icone.getImage());
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
@@ -57,7 +57,7 @@ public class Interface extends Game {
     void createButtons(Game jogo, Conquistas conq) {
 
         click_target = new JButton();
-        ImageIcon bolsonaro = new ImageIcon("img/skins/bolsonarinho.jpg");
+        ImageIcon bolsonaro = new ImageIcon("clicker/img/skins/bolsonarinho.jpg");
         click_target.setBounds(0, 300, 640, 620);
         click_target.setIcon(bolsonaro);
         click_target.addActionListener(e -> {
@@ -66,7 +66,7 @@ public class Interface extends Game {
         });
 
         cloroquinaB = new JButton("<html>&nbsp;&nbsp;Cloroquinas<br/>&nbsp;&nbsp;Custo:" + cloroquina.getCost() + "</html>");
-        cloroquinaB.setIcon(new ImageIcon("img/main/cloroquina.png"));
+        cloroquinaB.setIcon(new ImageIcon("clicker/img/main/cloroquina.png"));
         cloroquinaB.setBounds(713, 330, 500, 100);
         cloroquinaB.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
         cloroquinaB.addActionListener(e -> {
@@ -74,7 +74,7 @@ public class Interface extends Game {
             updateLabel(jogo);
         });
         propinaB = new JButton("<html>&nbsp;&nbsp;Propinas<br/>&nbsp;&nbsp;Custo:" + propina.getCost() + "</html>");
-        propinaB.setIcon(new ImageIcon("img/main/propina.png"));
+        propinaB.setIcon(new ImageIcon("clicker/img/main/propina.png"));
         propinaB.setBounds(713, 470, 500, 100);
         propinaB.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
         propinaB.addActionListener(e -> {
@@ -82,7 +82,7 @@ public class Interface extends Game {
             updateLabel(jogo);
         });
         patadasB = new JButton("<html>&nbsp;&nbsp;Patadas<br/>&nbsp;&nbsp;Custo:" + patadas.getCost() + "</html>");
-        patadasB.setIcon(new ImageIcon("img/main/patadas.png"));
+        patadasB.setIcon(new ImageIcon("clicker/img/main/patadas.png"));
         patadasB.setBounds(713, 610, 500, 100);
         patadasB.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
         patadasB.addActionListener(e -> {
@@ -90,7 +90,7 @@ public class Interface extends Game {
             updateLabel(jogo);
         });
         nepotismoB = new JButton("<html>&nbsp;&nbsp;Nepotismo<br/>&nbsp;&nbsp;Custo:" + nepotismo.getCost() + "</html>");
-        nepotismoB.setIcon(new ImageIcon("img/main/nepotismo.png"));
+        nepotismoB.setIcon(new ImageIcon("clicker/img/main/nepotismo.png"));
         nepotismoB.setBounds(713, 750, 500, 100);
         nepotismoB.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
         nepotismoB.addActionListener(e -> {
@@ -98,21 +98,25 @@ public class Interface extends Game {
             updateLabel(jogo);
         });
 
-        lightMode = new JRadioButton("light mode");
+        lightMode = new JButton("Light mode");
         lightMode.setBounds(1150,10,100,50);
         lightMode.setBackground(new Color(53,53,49));
         lightMode.setForeground(Color.white);
         lightMode.addActionListener(e -> {
-            JPanel light = new JPanel();
             if (lightmode) {
-                frame.remove(light);
                 lightmode = false;
+                panel.setBackground(new Color(53, 53, 49));
+                createLabels(jogo);
+                createButtons(jogo, conq);
+                addComp();
                 frame.repaint();
             }
             else{
                 lightmode = true;
-                light.setBackground(Color.white);
-                frame.add(light);
+                panel.removeAll();
+                panel.add(lightMode);
+                panel.setBackground(Color.white);
+                frame.repaint();
             }
         });
     }
